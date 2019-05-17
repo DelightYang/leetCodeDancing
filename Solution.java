@@ -1,22 +1,38 @@
-/**
- * leetcode21
- * 
- */
- 
+package leetcode.leetcode5;
+
+// 最长回文子串
 public class Solution {
-    public ListNode mergeTwoLists(ListNode listNode1, ListNode listNode2) {
-        if (listNode1 == null) {
-            return listNode2;
+    public String longestPalindrome(String s) {
+        if (s == null || s.length() < 1) {
+            return "";
         }
-        if (listNode2 == null) {
-            return listNode1;
+
+        int start = 0, end = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+//            分为奇偶序列两种情况 奇偶指字符串长度
+            int len1 = expandFromCenter(s, i, i);
+            int len2 = expandFromCenter(s, i, i + 1);
+            int finalLength = Math.max(len1, len2);
+
+            if (finalLength > end - start) {
+                start = i - (finalLength - 1) / 2;
+                end = i + finalLength / 2;
+            }
+
         }
-        if (listNode1.val < listNode2.val) {
-            listNode1.next = mergeTwoLists(listNode1.next, listNode2);
-            return listNode1;
-        }else {
-            listNode2.next = mergeTwoLists(listNode1, listNode2.next);
-            return listNode2;
+//        substring是现成方法
+        return s.substring(start, end + 1);
+    }
+
+    private int expandFromCenter(String s, int left, int right) {
+        int L = left, R = right;
+//        这个while简直绝
+        while (L >= 0 && R < s.length() && s.charAt(L) == s.charAt(R)) {
+//           继续向外扩展
+            L--;
+            R++;
         }
+        return R - L - 1;
     }
 }
