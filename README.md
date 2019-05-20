@@ -1,3 +1,3 @@
-# leetCodeResolution
+# leetCodeDancing
 
 Good resolutions happens here
