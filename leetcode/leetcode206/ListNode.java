@@ -1,4 +1,4 @@
-package leetcode.leetcode206_good;
+package leetcode.leetcode206;
 
 /**
  * leetcode206
