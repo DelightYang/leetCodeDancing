@@ -1,6 +1,6 @@
 # leetCodeDancing
 
-Good resolutions happens here
+Good resolutions dancing here
 
 -------------------------------------------------
 
